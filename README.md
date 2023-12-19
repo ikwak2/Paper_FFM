@@ -4,8 +4,7 @@ This repository contains the source for a manuscript "Enhancing Robustness of Vo
 
 A PDF will be available after publication.
 
-Also see [our workshop paper](https://ikwak2.github.io/publications/ddam004-kwak.pdf).  
-Our team ranked 3rd place at the ICASSP 2022 Grand Challenge on Audio Deepfake Detection, Track 1 (Low quality fake audio detection) using Frefuency Feature Masking. [Challenge Link](http://addchallenge.cn/#/) 
+Also see [our workshop paper](https://ikwak2.github.io/publications/ddam004-kwak.pdf). Our team ranked 3rd place at the ICASSP 2022 Grand Challenge on Audio Deepfake Detection, Track 1 (Low quality fake audio detection) using Frefuency Feature Masking. [Challenge Link](http://addchallenge.cn/#/) 
 
 ---
 
