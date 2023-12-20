@@ -10,7 +10,7 @@ Also see [our workshop paper](https://ikwak2.github.io/publications/ddam004-kwak
 
 Here's a description of the files:
 
-- xx.ipynb: ipynb notebook file that demonstrate the use of FFM.
+- FFM_Aug.ipynb: ipynb notebook file that demonstrate the use of FFM.
 - etc
 
 ---
