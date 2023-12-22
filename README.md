@@ -15,15 +15,15 @@ You will need to download the [ADD 2022 dataset](http://addchallenge.cn/download
 ```
 python run_FFM_BCResMax.py
 ```
----
 
+## File Description
 Here's a description of the files:
 
 - FFM_Aug.ipynb: ipynb notebook file that demonstrate the use of FFM.
-- etc
+- run_FFM_BCResMax.py: The code demonstrates how to use a voice spoofing detection model after applying FFM augmentation.
 
----
 
+## License
 The manuscript is licensed under the
 [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/).
 
