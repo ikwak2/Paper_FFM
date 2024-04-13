@@ -450,7 +450,7 @@ class DataGenerator(tensorflow.keras.utils.Sequence):
         
         if self.bell:
             def gen_bell(I, c, po, w) :
-                return -po * np.exp(-((I-c)/w)**2/2)
+                return -po * np.exp(-((I - c) / w)**2 / 2)
             
             p, side, W, po = self.bell
             
@@ -462,7 +462,7 @@ class DataGenerator(tensorflow.keras.utils.Sequence):
                 c = range(nf)
             
             if np.random.random() < p:
-                w = np.random.choice(range(W//2, W))
+                w = np.random.choice(range(W // 2, W))
                 I = np.array(range(nf))
                 c = I[np.random.choice(c, self.batch_size)]
                 bellf = gen_bell(I[np.newaxis, :], c[:, np.newaxis], po=po, w=w)
