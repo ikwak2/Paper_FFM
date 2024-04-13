@@ -47,7 +47,7 @@ class DataGenerator(tensorflow.keras.utils.Sequence):
                  filter_scale = 1, n_bins = 100, fmin = 10, 
                  hop_length = 128, win_length = 512, 
                  cutmix = False, cutout = False, specaug = False, specmix = False,
-                 beta_param = False, lowpass = False, highpass = False, ranfilter = False, ranfilter2 = False, dropblock = False, filteraug = False
+                 beta_param = False, lowpass = False, highpass = False, ranfilter = False, ranfilter2 = False, dropblock = False, filteraug = False, bell = False
                 ):
         'Initialization'
         self.data_dir = data_dir
@@ -84,6 +84,7 @@ class DataGenerator(tensorflow.keras.utils.Sequence):
         self.ranfilter2 = ranfilter2
         self.dropblock = dropblock
         self.filteraug = filteraug
+	self.bell = bell
 
 
         self.tofile = tofile
@@ -447,7 +448,26 @@ class DataGenerator(tensorflow.keras.utils.Sequence):
                         loc1 = np.random.choice(nf - b1, size = 1)[0]
                         nX[i, loc1:(loc1 + b1 - 1), :] = 0
         
-
+        if self.bell:
+            def gen_bell(I, c, po, w) :
+                return -po * np.exp(-((I-c)/w)**2/2)
+            
+            p, side, W, po = self.bell
+            
+            if side == 'low':
+                c = range(15, 25)
+            elif side == 'high':
+                c = range(75, 85)
+            elif side == 'all':
+                c = range(nf)
+            
+            if np.random.random() < p:
+                w = np.random.choice(range(W//2, W))
+                I = np.array(range(nf))
+                c = I[np.random.choice(c, self.batch_size)]
+                bellf = gen_bell(I[np.newaxis, :], c[:, np.newaxis], po=po, w=w)
+                bellfilter = 10**(bellf / 10)
+                nX = nX * bellfilter[:,:,np.newaxis, np.newaxis]	
                     
         return nX, ny
 
