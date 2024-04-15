@@ -449,10 +449,10 @@ class DataGenerator(tensorflow.keras.utils.Sequence):
                         nX[i, loc1:(loc1 + b1 - 1), :] = 0
         
         if self.bell:
-            def gen_bell(I, c, po, w) :
-                return -po * np.exp(-((I - c) / w)**2 / 2)
+            def gen_bell(S, c, m, w) :
+                return -m * np.exp(-((S - c) / w)**2 / 2)
             
-            p, side, W, po = self.bell
+            p, side, U, m = self.bell
             
             if side == 'low':
                 c = range(15, 25)
@@ -462,10 +462,10 @@ class DataGenerator(tensorflow.keras.utils.Sequence):
                 c = range(nf)
             
             if np.random.random() < p:
-                w = np.random.choice(range(W // 2, W))
-                I = np.array(range(nf))
-                c = I[np.random.choice(c, self.batch_size)]
-                bellf = gen_bell(I[np.newaxis, :], c[:, np.newaxis], po=po, w=w)
+                w = np.random.choice(range(U // 2, U))
+                S = np.array(range(nf))
+                c = S[np.random.choice(c, self.batch_size)]
+                bellf = gen_bell(S[np.newaxis, :], c[:, np.newaxis], m=m, w=w)
                 bellfilter = 10**(bellf / 10)
                 nX = nX * bellfilter[:,:,np.newaxis, np.newaxis]	
                     
