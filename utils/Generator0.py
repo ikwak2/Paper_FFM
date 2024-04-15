@@ -465,7 +465,7 @@ class DataGenerator(tensorflow.keras.utils.Sequence):
                 w = np.random.choice(range(U // 2, U))
                 S = np.array(range(nf))
                 c = S[np.random.choice(c, self.batch_size)]
-                bellf = gen_bell(S[np.newaxis, :], c[:, np.newaxis], m=m, w=w)
+                bellf = gen_bell(S[np.newaxis, :], c[:, np.newaxis], m = m, w = w)
                 bellfilter = 10**(bellf / 10)
                 nX = nX * bellfilter[:,:,np.newaxis, np.newaxis]	
                     
