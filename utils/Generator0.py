@@ -84,7 +84,7 @@ class DataGenerator(tensorflow.keras.utils.Sequence):
         self.ranfilter2 = ranfilter2
         self.dropblock = dropblock
         self.filteraug = filteraug
-	self.bell = bell
+        self.bell = bell
 
 
         self.tofile = tofile
@@ -467,7 +467,7 @@ class DataGenerator(tensorflow.keras.utils.Sequence):
                 c = S[np.random.choice(c, self.batch_size)]
                 bellf = gen_bell(S[np.newaxis, :], c[:, np.newaxis], m = m, w = w)
                 bellfilter = 10**(bellf / 10)
-                nX = nX * bellfilter[:,:,np.newaxis, np.newaxis]	
+                nX = nX * bellfilter[:,:,np.newaxis, np.newaxis]
                     
         return nX, ny
 
